@@ -1,0 +1,37 @@
+@import "tailwindcss/base";
+input[type="text"], input[type="email"], select, textarea {
+  @apply text-lg w-full block;
+}
+label {
+  @apply text-lg block;
+}
+input::placeholder {
+  font-style: italic;
+  @apply font-serif;
+}
+
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+.btn {
+  @apply text-lg bg-blue-700 text-white hover:bg-blue-400 shadow-sm min-w-min px-2 rounded border-0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
