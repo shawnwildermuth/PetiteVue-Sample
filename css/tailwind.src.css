@@ -19,7 +19,9 @@ input::placeholder {
   @apply text-lg bg-blue-700 text-white hover:bg-blue-400 shadow-sm min-w-min px-2 rounded border-0;
 }
 
-
+.btn:disabled {
+  @apply text-lg bg-blue-200 text-gray-400 cursor-not-allowed shadow-sm min-w-min px-2 rounded border-0;
+}
 
 
 
