@@ -25,16 +25,22 @@
     <main class="text-red-900">
       <div class="mx-auto w-96">
         <h3>Contact Us</h3>
-        <form novalidate>
+        <form novalidate id="theForm" @click.prevent="send()" v-cloak>
           <label for="fullName">Full Name</label>
-          <input id="fullName" type="text" name="fullName" placeholder="Your Name">
+          <input @keyup="validate()" id="fullName" v-model="message.fullName" type="text" name="fullName" placeholder="Your Name" autofocus autocomplete="off">
+          <div v-if="errors.fullName" class="italic text-red-400">{{ errors.fullName }}</div>
           <label for="email">Email</label>
-          <input id="email" type="email" name="email" placeholder="foo@bar.com">
+          <input @keyup="validate()" id="email" v-model="message.email" type="email" name="email" placeholder="foo@bar.com"  autocomplete="off">
+          <div v-if="errors.email" class="italic text-red-400">{{ errors.email }}</div>
           <label for="subject">Subject</label>
-          <input id="subject" type="text" name="subject" placeholder="What You Need">
-          <label for="message">Full Name</label>
-          <textarea id="message" name="message" rows="5"></textarea>
-          <input type="submit" value="Send Message" class="btn">
+          <input @keyup="validate()" id="subject" v-model="message.subject" type="text" name="subject" placeholder="What You Need"  autocomplete="off">
+          <div v-if="errors.subject" class="italic text-red-400">{{ errors.subject }}</div>
+          <label for="body">Body</label>
+          <textarea @keyup="validate()" id="body" name="body" v-model="message.body" rows="5"></textarea>
+          <div v-if="errors.body" class="italic text-red-400">{{ errors.body }}</div>
+          <input type="submit" value="Send Message" class="btn" :disabled="!errors.isValid">
+          <div>{{ status }}</div>
+          <pre v-show="false"> {{ message }}</pre>
         </form>
       </div>
     </main>
@@ -44,7 +50,8 @@
       <div class="text-center">Copyright 2021, Wilder Minds LLC</div>
     </footer>
   </div>
-  <script src="js/main.js"></script>
+  <script src="https://unpkg.com/petite-vue" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 
 </html>
